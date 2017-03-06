@@ -1,2 +1,2 @@
 mongo-cluster:
-  scale: 3
+  scale: 1

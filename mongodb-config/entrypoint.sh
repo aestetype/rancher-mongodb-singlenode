@@ -8,12 +8,10 @@ fi
 sleep 10
 /opt/rancher/bin/giddyup leader check
 if [ "$?" -eq "0" ]; then
-    echo "This is the lowest numbered contianer.. Handling the initiation."
+    echo "This is the lowest numbered container.. Handling the initiation."
     /opt/rancher/bin/initiate.sh $@
 else
 
-# Run the scaling script
-/opt/rancher/bin/scaling.sh &
 # Start mongodb
 if [ $? -ne 0 ]
 then
