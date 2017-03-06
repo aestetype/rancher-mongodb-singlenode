@@ -1,5 +1,8 @@
 #!/bin/bash
 
+if [ -n "$CATTLE_SCRIPT_DEBUG" ]; then
+	set -x
+fi
 
 # Run cluster init script
 /opt/rancher/bin/connect.sh &

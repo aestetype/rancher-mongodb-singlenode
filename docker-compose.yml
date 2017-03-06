@@ -1,7 +1,4 @@
 version: '2'
-volumes:
-  database_int:
-    driver: rancher-nfs
 services:
   mongo-cluster:
     restart: always
@@ -24,7 +21,7 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.start_once: 'true'
-    # build: ./mongodb-config
+    build: ./mongodb-config
     image: aestetype/rancher-mongodb-config-singlenode
     stdin_open: true
     entrypoint: /bin/true
@@ -34,6 +31,6 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.start_once: 'true'
     volumes:
-      - database_int:/data/db
+      - /data/db
     entrypoint: /bin/true
     image: busybox
