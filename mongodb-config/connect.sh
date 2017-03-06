@@ -20,10 +20,5 @@ function cluster_init {
 	done
 }
 
-# Script starts here
-# wait for mongo to start
-$GIDDYUP service wait scale --timeout 120
-
-# Wait until all services are up
 sleep 10
 cluster_init

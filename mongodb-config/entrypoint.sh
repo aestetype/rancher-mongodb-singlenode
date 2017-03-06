@@ -6,11 +6,7 @@ fi
 
 # Check for lowest ID
 sleep 10
-/opt/rancher/bin/giddyup leader check
-if [ "$?" -eq "0" ]; then
-    echo "This is the lowest numbered container.. Handling the initiation."
-    /opt/rancher/bin/initiate.sh $@
-else
+/opt/rancher/bin/initiate.sh $@
 
 # Start mongodb
 if [ $? -ne 0 ]

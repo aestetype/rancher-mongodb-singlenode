@@ -1,6 +1,6 @@
 version: '2'
 volumes:
-  aestream_int-db:
+  database_int:
     driver: rancher-nfs
 services:
   mongo-cluster:
@@ -12,7 +12,7 @@ services:
     command:
     - --replSet
     - "rs0"
-    image: mongo:3.4
+    image: mongo:3.2
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.sidekicks: mongo-base, mongo-datavolume
@@ -24,8 +24,8 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.start_once: 'true'
-    build: ./mongodb-config
-    image: aestetype/rancher-mongodb-config
+    # build: ./mongodb-config
+    image: aestetype/rancher-mongodb-config-singlenode
     stdin_open: true
     entrypoint: /bin/true
   mongo-datavolume:
@@ -34,6 +34,6 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.start_once: 'true'
     volumes:
-      - aestream_int-db:/data/db
+      - database_int:/data/db
     entrypoint: /bin/true
     image: busybox
